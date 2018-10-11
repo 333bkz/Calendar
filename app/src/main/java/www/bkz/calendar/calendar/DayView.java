@@ -20,7 +20,7 @@ public class DayView extends RelativeLayout {
     private View today_background, selected_background;
     private CalendarDate seedDate;
     private CalendarDate selectedDate;
-private int w, h;
+    private int w, h;
 
     public DayView(Context context, CalendarDate seedDate) {
         super(context);
