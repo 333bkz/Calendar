@@ -20,12 +20,13 @@ public class DayView extends RelativeLayout {
     private View today_background, selected_background;
     private CalendarDate seedDate;
     private CalendarDate selectedDate;
+private int w, h;
 
     public DayView(Context context, CalendarDate seedDate) {
         super(context);
         View item = LayoutInflater.from(getContext()).inflate(layoutResource, this);
-        item.measure(MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED),
-                MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED));
+        item.measure(MeasureSpec.makeMeasureSpec(w, MeasureSpec.EXACTLY),
+                MeasureSpec.makeMeasureSpec(h, MeasureSpec.EXACTLY));
         item.layout(0, 0, getMeasuredWidth(), getMeasuredHeight());
         dateTv = item.findViewById(R.id.day);
         today_background = item.findViewById(R.id.today_background);
@@ -63,6 +64,8 @@ public class DayView extends RelativeLayout {
     }
 
     public void draw(Canvas canvas, Day day, int w, int h) {
+        this.w = w;
+        this.h = h;
         refreshContent(day, w, h);
         int saveId = canvas.save();
         canvas.translate(day.col * w, day.row * h);
